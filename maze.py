@@ -19,6 +19,10 @@ def eh_verde(pixel):
 
 def bfs(adj):
     q = deque();
+    pais = dict()
+    curr = []
+
+    tam = len(adj[0])
 
     q.append([1,0])
 
@@ -29,18 +33,23 @@ def bfs(adj):
 
         adj[curr[0]][curr[1]] = [255, 0, 0]
 
+        plt.clf()
+
         plt.imshow(adj)
         plt.axis('off')
-        plt.pause(0.005)
+        # plt.pause(0.005)
+        plt.pause(0.00005)
 
         for i in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
             res = [x + y for x, y in zip(curr, i)]
-            print(res)
-            print(adj[res[0]][res[1]])
             el = adj[res[0]][res[1]]
 
             if eh_verde([el[0], el[1], el[2]]):
-                return
+                print(res, curr)
+                pais[res[0] * tam + res[1]] = curr
+                curr = res
+                q.clear()
+                break
 
             if res[0] < len(adj) and res[0] > 0:
                 pass
@@ -53,11 +62,23 @@ def bfs(adj):
                 continue
 
             if eh_branco([el[0], el[1], el[2]]):
+                pais[res[0] * tam + res[1]] = curr
                 q.append(res)
 
-        print(q)
+    key = curr[0] * tam + curr[1]
 
-     
+    while key != tam:
+        idx = pais[key]
+
+        adj[idx[0]][idx[1]] = [204, 153, 0]
+
+        key = idx[0] * tam + idx[1]
+
+        plt.clf()
+
+        plt.imshow(adj)
+        plt.axis('off')
+        plt.pause(0.005)
 
 def main():
     if len(sys.argv) < 2:
@@ -77,6 +98,7 @@ def main():
     plt.axis('off')
 
     bfs(image_array)
+    print("bla")
 
     plt.ioff()
     plt.show()
