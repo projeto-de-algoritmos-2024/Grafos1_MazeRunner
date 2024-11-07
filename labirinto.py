@@ -91,6 +91,7 @@ remover_paredes_aleatorias(labirinto, 11)
 # Convert the maze to an image and save it as PNG
 img = Image.fromarray(np.array(labirinto, dtype=np.uint8))
 img = img.convert("RGB")
+width, height = img.size
 img.save("labirinto_final.png")
 
 plt.ioff()

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste WebSocket - Matriz RGB</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <style>
+        #canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste WebSocket - Matriz RGB</h1>
+    
+    <input type="file" id="fileInput" accept="image/png, image/jpeg">
+    <button id="enviar">Enviar Imagem</button>
+
+    <h2>Imagem Processada</h2>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const socket = io('http://127.0.0.1:5000');
+
+        // Função para converter a imagem em uma matriz RGB
+        function imageToRGBMatrix(image, width, height) {
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0, width, height);
+
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imgData.data;
+            const matrix = [];
+
+            for (let y = 0; y < canvas.height; y++) {
+                let row = [];
+                for (let x = 0; x < canvas.width; x++) {
+                    const i = (y * canvas.width + x) * 4;
+                    row.push([pixels[i], pixels[i + 1], pixels[i + 2]]);
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+
+        // Evento de clique para enviar a imagem
+        document.getElementById('enviar').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const imagemBase64 = event.target.result;
+                    const img = new Image();
+
+                    img.onload = function() {
+                        // Envia a matriz RGB
+                        const matrix = imageToRGBMatrix(img, img.width, img.height);
+                        socket.emit('send_matrix', { image: matrix, algorithm: 'bfs' });
+                    };
+
+                    img.src = imagemBase64;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert("Por favor, selecione uma imagem.");
+            }
+        });
+
+        // Recebendo a matriz RGB processada
+        socket.on('receive_matrix', (data) => {
+            const matrix = data.image;
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            const width = matrix[0].length;
+            const height = matrix.length;
+
+            // Aqui aumentamos o fator de escala para melhorar a visualização
+            const scaleFactor = 10; // Ajuste esse valor para o tamanho desejado para cada pixel
+
+            // Redimensiona o canvas de acordo com o tamanho aumentado
+            canvas.width = width * scaleFactor;
+            canvas.height = height * scaleFactor;
+
+            // Desenhando cada "pixel" como um quadrado maior
+            matrix.forEach((row, y) => {
+                row.forEach((pixel, x) => {
+                    const color = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+
+                    // Desenha um quadrado maior (aumentando o tamanho do "pixel")
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x * scaleFactor, y * scaleFactor, scaleFactor, scaleFactor);
+                });
+            });
+        });
+
+        // Lidar com erros no WebSocket
+        socket.on('error', (data) => {
+            console.error('Erro:', data.message);
+        });
+    </script>
+</body>
+</html>
