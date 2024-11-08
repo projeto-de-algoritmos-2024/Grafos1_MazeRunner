@@ -7,6 +7,7 @@ import Controls from './components/Controls';
 import Canvas from './components/Canvas';
 import './App.css';
 import NeonBackground from'./components/NeonBackground';
+import Info from './components/infoextras'
 
 
 const socket = io('http://127.0.0.1:5000');
@@ -64,6 +65,8 @@ function App() {
                 <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
                 <h1 style={{ color: '#f39c12' }}>Labirinto</h1>
                 <Canvas matrix={mazeMatrix} />
+                <Info />
+
             </div>
             <Footer />
         </div>
