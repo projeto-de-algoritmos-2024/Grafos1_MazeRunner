@@ -11,10 +11,7 @@ function Footer() {
             <div class="footer-section">
                 <h3>Siga-nos</h3>
                 <div class="social-icons">
-                    <a href="#" aria-label="Facebook">🌐</a>
-                    <a href="#" aria-label="Twitter">🌐</a>
-                    <a href="#" aria-label="Instagram">🌐</a>
-                    <a href="#" aria-label="LinkedIn">🌐</a>
+                    <a href="#" aria-label="GitHub">🌐</a>
                 </div>
             </div>
         </div>

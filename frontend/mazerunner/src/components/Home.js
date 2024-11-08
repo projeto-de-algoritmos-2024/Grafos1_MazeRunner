@@ -2,9 +2,13 @@ import React from 'react';
 
 function Home() {
   return (
-    <div>
+    <div className='banner'>
 
-      <h2>Labirinto</h2>
+      <div className='titulo'>
+        <h1>Labirinto</h1>
+        <p className='sub'>gere seu labirinto e solucione</p>
+      </div>
+
 
     </div>
   );
