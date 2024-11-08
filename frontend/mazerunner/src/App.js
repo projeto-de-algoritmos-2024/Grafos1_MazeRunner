@@ -56,14 +56,15 @@ function App() {
 
     return (
         <div className="App">
-            <Head />
-            <Home></Home>
-            <div></div>
-            <NeonBackground></NeonBackground>
-            <h1 style={{ color: '#f39c12', marginTop:'100px' }}>Selecione as configurações do seu labirinto e a solução</h1>
-            <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
-            <h1 style={{ color: '#f39c12' }}>Labirinto</h1>
-            <Canvas matrix={mazeMatrix} />
+            <NeonBackground />
+            <div className='conteudo'> 
+                <Head />
+                <Home></Home>
+                <h1 style={{ color: '#f39c12', marginTop:'100px' }}>Selecione as configurações do seu labirinto e a solução</h1>
+                <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
+                <h1 style={{ color: '#f39c12' }}>Labirinto</h1>
+                <Canvas matrix={mazeMatrix} />
+            </div>
             <Footer />
         </div>
     );

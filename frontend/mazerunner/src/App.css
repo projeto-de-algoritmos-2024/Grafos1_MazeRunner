@@ -1,12 +1,16 @@
 .App {
   text-align: center;
-  height: 100%
+  position: relative;
 
 }
 
-.body{
-  height: 100%
+.conteudo{
+  position: relative;
+  height: 100%;
+  width: 100%;
+
 }
+
 
 canvas {
   border: 1px solid black;
@@ -36,7 +40,7 @@ canvas {
 }
 
 .titulo .sub{
-  color: #c7c7c7;
+  color: #ffffff;
 }
 
 footer {
@@ -193,10 +197,10 @@ footer a:hover {
 
 
 .neon-background {
-  position: absolute;
-  z-index: -1000;
+  position: fixed;
   width: 100%;
-  height: 200vh;
+  height: 100%;
+  z-index: -1;
   background-color: #111; 
   overflow: hidden;
   display: flex;
@@ -216,13 +220,13 @@ footer a:hover {
 
 .neon-light-1 {
   top: 20%;
-  left: 10%;
+  left: 30%;
   background: radial-gradient(circle, rgba(255, 153, 0, 0.6), rgba(255, 0, 255, 0) 70%);
 }
 
 .neon-light-2 {
   bottom: 20%;
-  left: 60%;
+  left: 50%;
   background: radial-gradient(circle, rgba(255, 102, 0, 0.6), rgba(0, 255, 255, 0) 70%);
 }
 
