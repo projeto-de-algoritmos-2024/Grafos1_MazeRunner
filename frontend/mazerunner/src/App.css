@@ -185,7 +185,7 @@ footer a:hover {
 
 .controls-container input:focus, 
 .controls-container select:focus {
-  border-color: #4CAF50;
+  border-color: #f39c12;
   outline: none;
 }
 
@@ -195,7 +195,7 @@ footer a:hover {
   font-size: 1em;
   font-weight: bold;
   color: white;
-  background-color: #4CAF50;
+  background-color: #f39c12;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -204,7 +204,7 @@ footer a:hover {
 }
 
 .controls-container button:hover {
-  background-color: #45a049;
+  background-color: #f39c12;
 }
 
 .banner {
