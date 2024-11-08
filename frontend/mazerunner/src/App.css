@@ -1,0 +1,15 @@
+/* src/App.css */
+.App {
+  text-align: center;
+  
+}
+
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 20px auto;
+}
+
+.navbar{
+  color: black;
+}
