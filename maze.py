@@ -39,7 +39,7 @@ def bfs(adj):
     q.append([1,0])
 
     while q:
-        curr = q.pop()
+        curr = q.popleft()
         
         el = adj[curr[0]][curr[1]]
 
@@ -89,14 +89,15 @@ def dfs(adj):
 
 
     while q:
-        
+        curr = q.pop()
+
         el = adj[curr[0]][curr[1]]
 
         plt.clf()
 
         plt.imshow(adj)
         plt.axis('off')
-        plt.pause(0.00005)
+        plt.pause(0.09)
 
         for i in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
             res = [x + y for x, y in zip(curr, i)]
@@ -120,12 +121,13 @@ def dfs(adj):
             if eh_branco([el[0], el[1], el[2]]):
                 pais[res[0] * tam + res[1]] = curr
                 adj[curr[0]][curr[1]] = [255, 0, 0]
-                curr = res
+                #curr = res
+                q.append(curr)
                 q.append(res)
                 break
         else:
-            curr = q.pop()
             adj[curr[0], curr[1]] = [34, 90, 34]
+            #curr = q.pop()
 
 
 def main():
