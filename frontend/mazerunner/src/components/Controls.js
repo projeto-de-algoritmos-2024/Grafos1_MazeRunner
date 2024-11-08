@@ -46,7 +46,7 @@ function Controls({ onGenerateMaze, onSolveMaze }) {
                         type="number"
                         value={paredes}
                         onChange={(e) => setParedes(e.target.value)}
-                        placeholder="Número de paredes"
+                        placeholder="Remover paredes"
                     />
                 </label>
                 <button onClick={handleGenerateMazeClick}>Gerar Labirinto</button>

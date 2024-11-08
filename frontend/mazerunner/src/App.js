@@ -36,7 +36,7 @@ function App() {
     }, []);
 
     const handleGenerateMaze = ({ largura, altura, paredes }) => {
-        if (largura && altura && paredes) {
+        if (largura && altura || paredes) {
             socket.emit('send_labirinto', {
                 largura,
                 altura,
