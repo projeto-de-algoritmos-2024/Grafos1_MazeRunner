@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import Head from './components/Head';
+import Footer from './components/Footer'
 import Home from './components/Home';
 import Controls from './components/Controls';
 import Canvas from './components/Canvas';
@@ -59,12 +60,13 @@ function App() {
 
   return (
     <div className="App">
-      <Head></Head>
+      <Head/>
       <Home></Home>
       <div></div>
       <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
       <h2>Labirinto</h2>
       <Canvas matrix={mazeMatrix} />
+      <Footer/>
     </div>
   );
 }
