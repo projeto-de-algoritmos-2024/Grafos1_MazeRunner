@@ -6,7 +6,7 @@ function Home() {
 
       <div className='titulo'>
         <h1>Labirinto</h1>
-        <p className='sub'>gere seu labirinto e solucione</p>
+        <p className='sub'>Gere seu labirinto e solucione</p>
       </div>
 
 
