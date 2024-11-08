@@ -8,67 +8,62 @@ import Canvas from './components/Canvas';
 import './App.css';
 
 
-const socket = io('http://127.0.0.1:5000');  
+const socket = io('http://127.0.0.1:5000');
 
 function App() {
-  const [mazeMatrix, setMazeMatrix] = useState(null);
+    const [mazeMatrix, setMazeMatrix] = useState(null);
 
-  useEffect(() => {
-    socket.on('receive_labirinto', (data) => {
-      setMazeMatrix(data.image);
-    });
+    useEffect(() => {
+        socket.on('receive_labirinto', (data) => {
+            setMazeMatrix(data.image);
+        });
 
-    socket.on('receive_matrix', (data) => {
-      setMazeMatrix(data.image);
-    });
+        socket.on('receive_matrix', (data) => {
+            setMazeMatrix(data.image);
+        });
 
-    socket.on('error', (data) => {
-      console.error('Erro:', data.message);
-    });
+        socket.on('error', (data) => {
+            console.error('Erro:', data.message);
+        });
 
-    return () => {
-      socket.off('receive_labirinto');
-      socket.off('receive_matrix');
-      socket.off('error');
+        return () => {
+            socket.off('receive_labirinto');
+            socket.off('receive_matrix');
+            socket.off('error');
+        };
+    }, []);
+
+    const handleGenerateMaze = ({ largura, altura, paredes }) => {
+        if (largura && altura && paredes) {
+            socket.emit('send_labirinto', {
+                largura,
+                altura,
+                paredes
+            });
+        } else {
+            alert("Por favor, preencha todos os campos para gerar o labirinto.");
+        }
     };
-  }, []);
 
-  const handleGenerateMaze = () => {
-    const largura = prompt("Digite a largura do labirinto:");
-    const altura = prompt("Digite a altura do labirinto:");
-    const paredes = prompt("Digite o número de paredes para remover:");
+    const handleSolveMaze = (algorithm) => {
+        if (algorithm === 'bfs' || algorithm === 'dfs') {
+            socket.emit('send_matrix', { algorithm });
+        } else {
+            alert("Algoritmo inválido. Escolha 'bfs' ou 'dfs'.");
+        }
+    };
 
-    if (largura && altura && paredes) {
-      socket.emit('send_labirinto', {
-        largura: parseInt(largura),
-        altura: parseInt(altura),
-        paredes: parseInt(paredes)
-      });
-    }
-  };
-
-  const handleSolveMaze = () => {
-    const algorithm = prompt("Digite o algoritmo (bfs ou dfs):");
-
-    if (algorithm === 'bfs' || algorithm === 'dfs') {
-      socket.emit('send_matrix', { algorithm: algorithm });
-    } else {
-      alert("Algoritmo inválido. Escolha 'bfs' ou 'dfs'.");
-    }
-  };
-  
-
-  return (
-    <div className="App">
-      <Head/>
-      <Home></Home>
-      <div></div>
-      <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
-      <h2>Labirinto</h2>
-      <Canvas matrix={mazeMatrix} />
-      <Footer/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Head />
+            <Home></Home>
+            <div></div>
+            <Controls onGenerateMaze={handleGenerateMaze} onSolveMaze={handleSolveMaze} />
+            <h2>Labirinto</h2>
+            <Canvas matrix={mazeMatrix} />
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
