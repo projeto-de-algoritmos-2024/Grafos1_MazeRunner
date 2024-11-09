@@ -9,9 +9,9 @@ function Footer() {
                 <p>Somos alunos da UNB e o intuito desse projeto é aplicar teoria de grafos na prática</p>
             </div>
             <div class="footer-section">
-                <h3>Siga-nos</h3>
+                <h3>GitHub do projeto</h3>
                 <div class="social-icons">
-                    <a href="#" aria-label="GitHub">🌐</a>
+                    <a href="https://github.com/projeto-de-algoritmos-2024/Grafos1_MazeRunner" aria-label="GitHub">🌐</a>
                 </div>
             </div>
         </div>
