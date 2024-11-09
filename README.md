@@ -36,11 +36,20 @@ Para resolver o labirinto, implementamos uma busca, podendo ser por BFS (Busca e
 Para executar o backend do projeto, é necessário ter **Python** instalado (versão recomendada: >= 3.8) e instalar algumas bibliotecas.
 
 #### Passo a Passo
-1. **Navegue** até a pasta do backend, onde os algoritmos foram implementados.
-2. **Instale as bibliotecas** necessárias executando o seguinte comando:
+
+1. **Crie um ambiente virtual (recomendado):**
 
    ```bash
-   pip install flask flask_socketio numpy matplotlib
+   python3 -m venv .venv  # Cria um ambiente virtual chamado .venv
+   source .venv/bin/activate  # Ativa o ambiente virtual (Linux/macOS)
+   .venv\Scripts\activate  # Ativa o ambiente virtual (Windows)
+
+2. **Navegue** até a pasta do backend, onde os algoritmos foram implementados.
+
+3. **Instale as bibliotecas** necessárias executando o seguinte comando:
+
+   ```bash
+   pip install -r requirements.txt
 
 ### Frontend
 Para executar o Frontend do projeto, é necessário ter **Node.js** instalado e instalar o **Npm**.
