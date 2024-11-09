@@ -17,7 +17,14 @@ Para simular o labirinto como um grafo, aplicamos a técnica de preenchimento po
 Para resolver o labirinto, implementamos uma busca, podendo ser por BFS (Busca em Largura) ou DFS, que percorre o labirinto colorindo o caminho explorado em vermelho. Ao encontrar o caminho até o destino, ele é destacado em amarelo. Na DFS, optamos por destacar também o backtracking com uma cor diferente, realçando as etapas de retrocesso no processo de busca.implementamos uma BFS ou uma DFS, para resolver este labirinto e pintamos de vermelho esta busca e ao achar o caminho ele pinta de amarelo, e no caso da DFS achamos interessante pintar os backtraking.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+![Inicial](./assets/inicial.png)
+
+![Inicial](./assets/configuracao.png)
+
+![Inicial](./assets/bfs.png)
+
+![Inicial](./assets/dfs.png)
 
 ## Instalação 
 **Linguagem**: Python, Javascript<br>
