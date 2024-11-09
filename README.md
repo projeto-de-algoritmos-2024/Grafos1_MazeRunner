@@ -58,7 +58,7 @@ Para utilizar o projeto, é necessário que todas as dependências estejam insta
    - Com as dependências já instaladas, execute o seguinte comando para iniciar o servidor backend:
      
      ```bash
-     python teste.py
+     python maze.py
      ```
 
    - Isso iniciará o servidor Flask e manterá o backend ativo, (em `http://127.0.0.1:500`).
