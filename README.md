@@ -54,14 +54,14 @@ Para utilizar o projeto, é necessário que todas as dependências estejam insta
 ## Passo a Passo para Uso
 
 1. **Inicie o Backend**
-   - Navegue até a pasta do backend onde o arquivo `teste.py` está localizado.
+   - Navegue até a pasta do `backend` onde o arquivo `maze.py` está localizado.
    - Com as dependências já instaladas, execute o seguinte comando para iniciar o servidor backend:
      
      ```bash
      python teste.py
      ```
 
-   - Isso iniciará o servidor Flask e manterá o backend ativo.
+   - Isso iniciará o servidor Flask e manterá o backend ativo, (em `http://127.0.0.1:500`).
 
 2. **Inicie o Frontend**
    - Com o servidor backend em execução, abra um novo terminal e navegue até a pasta do frontend, `frontend/mazerunner`.
