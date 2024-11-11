@@ -15,6 +15,10 @@ Nosso projeto consiste em um gerador de labirintos que utiliza o algoritmo de Bu
 Para simular o labirinto como um grafo, aplicamos a técnica de preenchimento por inundação (flood fill), onde cada pixel representa um nó, e seus vizinhos imediatos são os pixels adjacentes. Dessa forma, evitamos o uso de uma matriz de adjacência ou lista de adjacência explícita.
 
 Para resolver o labirinto, implementamos uma busca, podendo ser por BFS (Busca em Largura) ou DFS, que percorre o labirinto colorindo o caminho explorado em vermelho. Ao encontrar o caminho até o destino, ele é destacado em amarelo. Na DFS, optamos por destacar também o backtracking com uma cor diferente, realçando as etapas de retrocesso no processo de busca.implementamos uma BFS ou uma DFS, para resolver este labirinto e pintamos de vermelho esta busca e ao achar o caminho ele pinta de amarelo, e no caso da DFS achamos interessante pintar os backtraking.
+## Vídeo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4hG9_D-S5wQ?si=7UOEobsKM7Y1Gbde" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[Link para o vídeo](https://youtu.be/4hG9_D-S5wQ)
 
 ## Screenshots
 
